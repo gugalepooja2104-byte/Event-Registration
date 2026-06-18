@@ -1,0 +1,155 @@
+<?php
+// Optional: include DB if you want dynamic events later
+// include(__DIR__ . '/db.php');
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusEvents | Registration & Payment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <nav class="navbar">
+        <div class="logo">CampusEvents</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="login.php">Admin</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>College Event Registration System</h1>
+    <p>Join workshops, fests, and seminars on campus!</p>
+</section>
+
+<!-- EVENTS -->
+<section id="events" class="event-container">
+    <h2 class="section-title">Upcoming Events</h2>
+
+    <div class="event-grid">
+
+        <div class="event-card">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800" class="event-image">
+            <div class="info">
+                <h3>Campus Codethon</h3>
+                <p><strong>Fee:</strong> ₹50 | <strong>Venue:</strong> Lab 102</p>
+                <button class="reg-btn" onclick="openModal('Campus Codethon', 50)">Register Now</button>
+            </div>
+        </div>
+
+        <div class="event-card">
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800" class="event-image">
+            <div class="info">
+                <h3>8-Hour Hackathon</h3>
+                <p><strong>Fee:</strong> ₹200 | <strong>Venue:</strong> IT Hall</p>
+                <button class="reg-btn" onclick="openModal('8-Hour Hackathon', 200)">Register Now</button>
+            </div>
+        </div>
+
+        <div class="event-card">
+            <img src="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=800" class="event-image">
+            <div class="info">
+                <h3>Speed Typethon</h3>
+                <p><strong>Fee:</strong> ₹50 | <strong>Venue:</strong> Computer Center</p>
+                <button class="reg-btn" onclick="openModal('Speed Typethon', 50)">Register Now</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- REGISTRATION MODAL -->
+<div id="regModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('regModal')">&times;</span>
+
+        <h2>Event Registration</h2>
+        <hr>
+
+        <form id="registrationForm">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="studentName" required>
+            </div>
+
+            <div class="form-group">
+                <label>Student ID</label>
+                <input type="text" id="studentID" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="studentEmail" required>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                Proceed to Payment
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- PAYMENT MODAL -->
+<div id="payModal" class="modal">
+    <div class="modal-content payment-box">
+        <span class="close" onclick="closeModal('payModal')">&times;</span>
+
+        <h2>Complete Payment</h2>
+        <p id="payAmount" class="price-tag"></p>
+
+        <div class="qr-container">
+            <img id="qrCode" src="" alt="QR Code">
+        </div>
+
+        <p style="font-size: 0.85rem; color: #666;">
+            Scan using GPay / PhonePe / Paytm
+        </p>
+
+        <input type="text" id="txnId" placeholder="Enter Transaction ID">
+
+        <button class="submit-btn" onclick="verifyPayment()"
+                style="background:#2c3e50; margin-top:15px;">
+            Submit Payment
+        </button>
+    </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+    <h2>Contact Us</h2>
+
+    <div class="contact-container">
+        <div class="contact-info">
+            <p><strong>Email:</strong> events@raisoni.edu</p>
+            <p><strong>Office:</strong> SAC Ground Floor</p>
+        </div>
+
+        <form class="contact-form">
+            <input type="text" placeholder="Name" required>
+            <textarea rows="3" placeholder="Message" required></textarea>
+            <button type="button" onclick="alert('Message Sent!')">Send</button>
+        </form>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2026 CampusEvents. All Rights Reserved.</p>
+</footer>
+
+<!-- JS -->
+<script src="script.js"></script>
+
+</body>
+</html>
